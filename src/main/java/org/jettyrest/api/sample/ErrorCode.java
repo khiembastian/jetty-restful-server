@@ -1,8 +1,9 @@
 package org.jettyrest.api.sample;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 public class ErrorCode {
-    private Logger log = LoggerFactory.getLogger(ErrorCode.class);
+    public static final int INTERNAL_ERROR = 1000;
+
+    public static final int NOTFOUND_CONTENT = 100;
+    public static final int INVALID_REQUEST_DATA = 102;
+    public static final int DUPLICATE_CONTENT = 103;
 }

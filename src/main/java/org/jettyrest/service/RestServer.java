@@ -26,8 +26,6 @@ public class RestServer extends AbstractService {
 
     private ServletHolder jerseyServlet;
 
-    private boolean initialized;
-
     public RestServer(String appConfigPath) {
         setAppConfigPath(appConfigPath);
         String gzipFilter = "com.sun.jersey.api.container.filter.GZIPContentEncodingFilter";
@@ -88,15 +86,10 @@ public class RestServer extends AbstractService {
 
         ContextHandlerCollection contexts = new ContextHandlerCollection();
         contexts.addHandler(contextHandler);
-
-
         addRequestLog(contexts, serverConfig);
-
         contexts.addHandler(new StatisticsHandler());
 
         jettyServer.setHandler(contexts);
-
-        initialized = true;
     }
 
     @Override

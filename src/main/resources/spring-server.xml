@@ -1,6 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:property-placeholder
+            location="classpath:default.properties,${service.config}"
+            ignore-resource-not-found="true"
+            system-properties-mode="OVERRIDE"/>
+
+    <bean id="executorThreadPoolArrayBlockedQueue" class="org.eclipse.jetty.util.thread.ExecutorThreadPool">
+        <constructor-arg index="0" value="${server.threads.poolMinSize}"/>
+        <constructor-arg index="1" value="${server.threads.poolMaxSize}"/>
+        <constructor-arg index="2" value="${server.threads.keepAliveTimeMs}"/>
+        <constructor-arg index="3" value="MILLISECONDS"/>
+        <constructor-arg index="4" ref="arrayBlockingQueue"/>
+    </bean>
+
+    <bean id="arrayBlockingQueue" class="java.util.concurrent.ArrayBlockingQueue">
+        <constructor-arg index="0" value="${server.threads.queueSize}"/>
+    </bean>
+
+
+    <bean class="org.jettyrest.service.RestServer">
+        <constructor-arg value="${application.config}" />
+        <property name="serverConfig">
+            <bean class="org.jettyrest.service.ServerConfig">
+                <property name="port" value="${port}"/>
+                <property name="enableRequestLog" value="${server.requestLog.enabled}"/>
+                <property name="enableGzipCompression" value="true"/>
+                <property name="threadPool" ref="executorThreadPoolArrayBlockedQueue"/>
+                <property name="requestBufferSize" value="${server.requestBufferSize}"/>
+                <property name="responseBufferSize" value="${server.responseBufferSize}"/>
+            </bean>
+        </property>
+    </bean>
 
 </beans>
