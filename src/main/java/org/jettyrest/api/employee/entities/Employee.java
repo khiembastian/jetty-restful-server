@@ -27,7 +27,9 @@ public class Employee {
     public Employee(String name, String dept) {
         setName(name);
         setDept(dept);
-        setCreated(new Date());
+        Date now = new Date();
+        setCreated(now);
+        setModified(now);
     }
 
     public String getId() {
