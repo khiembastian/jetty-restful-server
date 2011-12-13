@@ -1,4 +1,5 @@
 # The What
+
 We are building a RESTful starter app for Heroku that uses Spring, Jersey and embedded Jetty to do useful work.
 
 To run type the below at command line. This will startup restful server listening on port 8080
