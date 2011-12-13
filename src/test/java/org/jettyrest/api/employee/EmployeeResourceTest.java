@@ -9,10 +9,11 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import javax.ws.rs.core.Response;
+
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.verify;
@@ -35,11 +36,21 @@ public class EmployeeResourceTest {
 
 
     @Test
-    public void shouldHaveSaveMethod() {
+    public void shouldSaveAndReturnCreatedStatusCode() {
         given(service.save(employee)).willReturn("a uuid");
-        String uuid = employeeResource.save(employee);
-        assertNotNull(uuid);
-        assertThat(uuid, is(equalTo("a uuid")));
+        Response response = employeeResource.save(employee);
+        assertNotNull(response);
+        assertEquals(Response.Status.CREATED.getStatusCode(), response.getStatus());
+    }
+
+
+    @Test
+    public void shouldSaveAndReturnCreatedIdAsBody() {
+        given(service.save(employee)).willReturn("a uuid");
+        Response response = employeeResource.save(employee);
+        CreatedId createdId = (CreatedId) response.getEntity();
+        assertNotNull(createdId);
+        assertEquals("a uuid", createdId.getId());
     }
 
 
