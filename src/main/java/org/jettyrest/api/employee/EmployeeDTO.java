@@ -1,6 +1,6 @@
-package org.jettyrest.api.sample;
+package org.jettyrest.api.employee;
 
-import org.jettyrest.api.sample.entities.Employee;
+import org.jettyrest.api.employee.entities.Employee;
 
 public class EmployeeDTO {
 

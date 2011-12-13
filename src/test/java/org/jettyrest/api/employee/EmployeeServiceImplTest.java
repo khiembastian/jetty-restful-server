@@ -1,7 +1,7 @@
-package org.jettyrest.api.sample;
+package org.jettyrest.api.employee;
 
-import org.jettyrest.api.sample.entities.Employee;
-import org.jettyrest.api.sample.repositories.EmployeeRepository;
+import org.jettyrest.api.employee.entities.Employee;
+import org.jettyrest.api.employee.repositories.EmployeeRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

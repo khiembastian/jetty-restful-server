@@ -1,4 +1,4 @@
-package org.jettyrest.api.sample.validator;
+package org.jettyrest.api.validator;
 
 import java.util.Map;
 

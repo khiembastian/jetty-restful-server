@@ -1,8 +1,8 @@
-package org.jettyrest.api.sample;
+package org.jettyrest.api;
 
-import org.jettyrest.api.sample.exception.ApiException;
-import org.jettyrest.api.sample.exception.ErrorCode;
-import org.jettyrest.api.sample.validator.ApiValidator;
+import org.jettyrest.api.exception.ApiException;
+import org.jettyrest.api.exception.ErrorCode;
+import org.jettyrest.api.validator.ApiValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Map;

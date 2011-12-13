@@ -1,8 +1,8 @@
-package org.jettyrest.api.sample;
+package org.jettyrest.api.employee;
 
-import org.jettyrest.api.sample.entities.Employee;
-import org.jettyrest.api.sample.exception.ApiException;
-import org.jettyrest.api.sample.exception.ErrorCode;
+import org.jettyrest.api.employee.entities.Employee;
+import org.jettyrest.api.exception.ApiException;
+import org.jettyrest.api.exception.ErrorCode;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

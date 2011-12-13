@@ -1,4 +1,4 @@
-package org.jettyrest.server;
+package org.jettyrest.api;
 
 import com.google.common.base.Service;
 import org.slf4j.Logger;

@@ -1,4 +1,4 @@
-package org.jettyrest.api.sample.exception;
+package org.jettyrest.api.exception;
 
 public class ErrorCode {
     public static final int INTERNAL_ERROR = 1000;

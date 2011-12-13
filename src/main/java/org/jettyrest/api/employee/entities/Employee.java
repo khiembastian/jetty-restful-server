@@ -1,4 +1,4 @@
-package org.jettyrest.api.sample.entities;
+package org.jettyrest.api.employee.entities;
 
 import javax.persistence.*;
 import java.util.Date;

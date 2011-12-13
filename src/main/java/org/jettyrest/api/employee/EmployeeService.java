@@ -1,4 +1,4 @@
-package org.jettyrest.api.sample;
+package org.jettyrest.api.employee;
 
 public interface EmployeeService<T> {
     void update(String uuid, String attributeName, String attributeValue);
