@@ -1,6 +1,8 @@
 package org.jettyrest.api.sample;
 
-import org.jettyrest.api.sample.dao.DAO;
+import org.jettyrest.api.sample.entities.Employee;
+import org.jettyrest.api.sample.exception.ApiException;
+import org.jettyrest.api.sample.exception.ErrorCode;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,6 +14,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.verify;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -21,10 +24,7 @@ public class EmployeeResourceTest {
     private Employee employee;
 
     @Mock
-    private DAO<Employee> employeeDAO;
-
-    @Mock
-    private Service<Employee> service;
+    private EmployeeService<Employee> service;
 
     @Before
     public void setup() {
@@ -89,8 +89,7 @@ public class EmployeeResourceTest {
         String attributeName = "yargablabla";
         String attributeValue = "Mango";
 
-        given(service.update(uuid, attributeName, attributeValue)).willThrow(new ApiException("not supported attribute", ErrorCode.INVALID_REQUEST_DATA));
-
+        doThrow(new ApiException("not supported attribute", ErrorCode.INVALID_REQUEST_DATA)).when(service).update(uuid, attributeName, attributeValue);
         employeeResource.update(uuid, attributeName, attributeValue);
 
     }

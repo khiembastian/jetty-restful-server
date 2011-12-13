@@ -1,4 +1,4 @@
-package org.jettyrest.api.sample;
+package org.jettyrest.api.sample.exception;
 
 public class ApiException extends RuntimeException {
 
